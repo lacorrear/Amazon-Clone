@@ -1,0 +1,47 @@
+<div class="home animate__animated animate__fadeIn">
+  <div class="home__container">
+    <img
+      class="home__containerImage"
+      src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+      alt=""
+    />
+
+    <div *ngIf="dbProducts.length >= 1">
+      <div class="home__containerRow">
+        <app-product-card
+          style="flex: 0.5"
+          [product]="dbProducts[0]"
+        ></app-product-card>
+
+        <app-product-card
+          style="flex: 0.5"
+          [product]="dbProducts[1]"
+        ></app-product-card>
+      </div>
+
+      <div class="home__containerRow">
+        <app-product-card
+          style="flex: 0.33"
+          [product]="dbProducts[2]"
+        ></app-product-card>
+
+        <app-product-card
+          style="flex: 0.33"
+          [product]="dbProducts[3]"
+        ></app-product-card>
+
+        <app-product-card
+          style="flex: 0.33"
+          [product]="dbProducts[4]"
+        ></app-product-card>
+      </div>
+
+      <div class="home__containerRow">
+        <app-product-card
+          style="flex: 1"
+          [product]="dbProducts[5]"
+        ></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>

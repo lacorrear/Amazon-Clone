@@ -1,0 +1,115 @@
+.header {
+  background-color: #131921;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0 !important;
+  z-index: 100;
+
+  &__logo {
+    // background-color: rebeccapurple;
+    height: 45px;
+    width: 130px;
+    margin: 0 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  &__search {
+    // background-color: salmon;
+    // border: 3px solid #f90;
+    display: flex;
+    flex: 1;
+    margin: 10px;
+    min-width: 250px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 4px;
+
+    &Input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: 0;
+      padding-left: 10px;
+    }
+    &Icon {
+      background-color: #f3a847;
+      cursor: pointer;
+      height: 100%;
+      width: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      #searchIcon {
+        // background-color: palegreen;
+        font-size: 30px;
+      }
+    }
+  }
+
+  &__navLocation {
+    display: flex;
+    cursor: pointer;
+    // background-color: thistle;
+    padding-left: 0px;
+    #locationIcon {
+      // background-color: slateblue;
+      width: 27px;
+      font-size: 30px;
+    }
+  }
+
+  &__nav {
+    // background-color: palegreen;
+    height: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    &Option {
+      // background-color: springgreen;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      white-space: nowrap;
+      margin-left: 12px;
+      margin-right: 12px;
+      color: white;
+      &Up {
+        // background-color: purple;
+        font-size: 12px;
+        font-weight: 400;
+      }
+      &Down {
+        // background-color: royalblue;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__shoppingCart {
+    // background-color: yellow;
+    height: 70%;
+    display: flex;
+    cursor: pointer;
+    color: white;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 10px;
+    margin-right: 15px;
+    #shoppingCartIcon {
+      // padding: 10px;
+      font-size: 35px;
+    }
+    #shoppingCartText {
+      // background-color: aqua;
+      align-self: flex-end;
+      padding-bottom: 2px;
+    }
+  }
+}

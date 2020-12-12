@@ -1,0 +1,28 @@
+<div class="subTotal">
+  <div class="subTotal__info">
+    <div *ngIf="numberOfitems > 0" class="subTotal__infoFreeShipping">
+      <div class="subTotal__infoFreeShipping__icon">
+        <span id="checkIcon" class="material-icons"> check_circle </span>
+      </div>
+
+      <div class="subTotal__infoFreeShipping__text">
+        <span>
+          Your order qualifies for
+          <strong>FREE Shipping</strong>. Details
+        </span>
+      </div>
+    </div>
+
+    <span id="sc-subtotal">
+      Subtotal ({{ numberOfitems }} item<span *ngIf="numberOfitems > 1">s</span
+      >):
+    </span>
+    <span id="sc-subtotal-amount"> {{ totalToPay | currency }} </span>
+    <mat-checkbox class="subTotal__infoCheckbox">
+      <span class="subTotal__infoCheckboxText">
+        This order contains a gift
+      </span>
+    </mat-checkbox>
+  </div>
+  <button id="checkoutButton" mat-flat-button>Proceed to checkout</button>
+</div>

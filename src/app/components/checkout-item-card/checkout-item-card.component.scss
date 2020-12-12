@@ -1,0 +1,142 @@
+.checkOutItem {
+  //   background-color: gray;
+  display: flex;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: solid 1px lightgrey;
+
+  &__image {
+    // background-color: lime;
+    display: flex;
+    width: 190px;
+    max-height: 190px;
+    margin-left: 2%;
+    margin-right: 1%;
+    img {
+      width: 100%;
+      object-fit: contain;
+      justify-self: center;
+      cursor: pointer;
+    }
+  }
+
+  &__info {
+    // background-color: hotpink;
+    flex: 0.85;
+
+    p,
+    h1 {
+      margin-bottom: 4px;
+    }
+
+    &Title {
+      font-size: 18px !important;
+      line-height: 24px !important;
+      font-weight: 500;
+      color: #007185;
+      cursor: pointer;
+      word-wrap: break-word;
+    }
+
+    &Rating {
+      //   background-color: mediumslateblue;
+      margin-bottom: 4px;
+    }
+
+    &Product {
+      //   background-color: lightgreen;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      &__stock {
+        color: #007600 !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+      }
+
+      &__shipping {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        color: #565959 !important;
+      }
+    }
+
+    &QtyOptions {
+      //   background-color: mediumseagreen;
+      display: flex;
+      align-items: center;
+
+      a {
+        color: #0066c0;
+        cursor: pointer;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      &__button {
+        border-radius: 7px;
+        background: #f0f2f2;
+        box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+        border: solid 1px black;
+        width: 80px;
+        height: 25px;
+
+        // padding: 0 10px 15px 11px;
+        // vertical-align: super !important;
+
+        &Setup {
+          // background-color: crimson;
+          display: flex;
+
+          span {
+            // background-color: chartreuse;
+            margin-right: 15px;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      &__delete {
+        border-left: solid 1px lightgray;
+        border-right: solid 1px lightgray;
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+    }
+  }
+
+  &__price {
+    // background-color: lightgreen;
+    flex: 0.15;
+    width: 100px;
+    // margin-right: 1%;
+    align-self: flex-start;
+    text-align: right;
+    h1 {
+      font-size: 24px !important;
+      line-height: 32px !important;
+      font-weight: 700 !important;
+    }
+  }
+}
+
+#startIcon {
+  color: #ffa41c;
+  // See border icon color https://stackoverflow.com/questions/41317648/how-can-i-show-only-outline-for-a-font-awesome-icon/41317802
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #e9a466;
+  margin: 2px;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top: 0 !important;
+  padding-top: 5px !important;
+}

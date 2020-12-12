@@ -1,0 +1,28 @@
+.home {
+  padding-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+  &__container {
+    &Image {
+      width: 100%;
+      position: relative;
+      z-index: -1 !important;
+      margin-bottom: -220px;
+      mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0)
+      );
+    }
+    &Row {
+      // background-color: blueviolet;
+      display: flex;
+      // align-items: center;
+      justify-content: space-evenly;
+      z-index: 1 !important;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

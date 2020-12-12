@@ -1,0 +1,143 @@
+<div class="dialogBody">
+  <h2 mat-dialog-title>Create account</h2>
+  <mat-dialog-content [formGroup]="userInfoForm" class="mat-typography">
+    <!--------------------------------------------------------------->
+    <!-- Your name INPUT -->
+    <!--------------------------------------------------------------->
+    <mat-form-field
+      appearance="outline"
+      color="accent"
+      class="dialogBody__imputUserInfo"
+    >
+      <mat-label>Your name</mat-label>
+      <input [(formControl)]="name" required matInput />
+      <mat-error *ngIf="name.invalid">
+        {{ getErrorMessage("name") }}
+      </mat-error>
+    </mat-form-field>
+    <!--------------------------------------------------------------->
+    <!-- /Your name INPUT -->
+    <!--------------------------------------------------------------->
+
+    <!--------------------------------------------------------------->
+    <!-- Your email INPUT -->
+    <!--------------------------------------------------------------->
+    <div [class.validEmail]="email.valid">
+      <mat-form-field
+        appearance="outline"
+        color="accent"
+        class="dialogBody__imputUserInfo"
+      >
+        <mat-label>Email</mat-label>
+        <input [(formControl)]="email" required matInput />
+        <mat-error *ngIf="email.invalid">
+          {{ getErrorMessage("email") }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!--------------------------------------------------------------->
+    <!-- /Your email INPUT -->
+    <!--------------------------------------------------------------->
+
+    <!--------------------------------------------------------------->
+    <!-- Password1 IMPUT -->
+    <!--------------------------------------------------------------->
+    <mat-form-field
+      appearance="outline"
+      color="accent"
+      class="dialogBody__imputUserInfo"
+    >
+      <mat-label>Password</mat-label>
+      <input
+        [(formControl)]="password1"
+        required
+        matInput
+        placeholder="At least 6 characters"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-error *ngIf="password1.invalid">
+        {{ getErrorMessage("password1") }}
+      </mat-error>
+
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <!--------------------------------------------------------------->
+    <!-- /Password1 IMPUT -->
+    <!--------------------------------------------------------------->
+
+    <div class="dialogBody__passwordMessage">
+      <div class="dialogBody__passwordMessageIcon">
+        <span id="infoIcon" class="material-icons"> priority_high </span>
+      </div>
+      <div class="dialogBody__passwordMessageText">
+        <h5>Passwords must be at least 6 characters.</h5>
+      </div>
+    </div>
+
+    <!--------------------------------------------------------------->
+    <!-- Password2 IMPUT -->
+    <!--------------------------------------------------------------->
+    <mat-form-field
+      appearance="outline"
+      color="accent"
+      class="dialogBody__imputUserInfo"
+    >
+      <mat-label>Re-enter password</mat-label>
+      <input
+        [(formControl)]="password2"
+        required
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-error *ngIf="password2.invalid">
+        {{ getErrorMessage("password2") }}
+      </mat-error>
+
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <!--------------------------------------------------------------->
+    <!-- /Password2 IMPUT -->
+    <!--------------------------------------------------------------->
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button id="closeBtn" mat-icon-button mat-dialog-close>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+
+    <button
+      id="createBtn"
+      (click)="_authService.SignUp(email.value, password1.value)"
+      cdkFocusInitial
+      type="submit"
+      [disabled]="!userInfoForm.valid"
+      [mat-dialog-close]="true"
+      mat-button
+    >
+      Create your Amazon account
+    </button>
+    <div class="dialogBody__bottomMessage">
+      <p>Already have an account? <a mat-dialog-close>Sign-In</a></p>
+    </div>
+
+    <!-- <button (click)="onClick()">print form</button> -->
+
+    <p>{{ _authService.userData?.name }}</p>
+  </mat-dialog-actions>
+</div>

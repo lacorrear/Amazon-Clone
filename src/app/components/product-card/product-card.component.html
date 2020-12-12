@@ -1,0 +1,26 @@
+<div class="product">
+  <div class="product__info">
+    <span class="product__infoDescription"> {{ product.title }} </span>
+
+    <span class="product__infoPrice">
+      <small>$</small> <strong>{{ product.price }}</strong>
+    </span>
+
+    <div class="product__infoRating">
+      <span
+        id="startIcon"
+        *ngFor="let item of fakeArray()"
+        class="material-icons"
+      >
+        star
+      </span>
+    </div>
+  </div>
+
+  <img [src]="product.image" alt="product_image" class="product__image" />
+
+  <button (click)="addToCart()" id="addToCartButton" mat-flat-button>
+    <span class="material-icons"> shopping_cart </span>
+    Add to Cart
+  </button>
+</div>

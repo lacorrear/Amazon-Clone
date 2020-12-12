@@ -1,0 +1,78 @@
+<div class="header animate__animated animate__fadeIn">
+  <a>
+    <img
+      (click)="homeRouter()"
+      class="header__logo"
+      src="https://images-na.ssl-images-amazon.com/images/G/01/magicarp/image/amazon-logo-white.svg"
+      alt="Amazon logo"
+    />
+  </a>
+
+  <div class="header__navLocation">
+    <span
+      id="locationIcon"
+      class="material-icons-outlined"
+      style="color: white"
+    >
+      location_on_outline
+    </span>
+    <div class="header__navOption">
+      <span class="header__navOptionUp">Deliver To</span>
+      <span class="header__navOptionDown">Colombia</span>
+    </div>
+  </div>
+
+  <div class="header__search">
+    <input class="header__searchInput" type="text" />
+    <div class="header__searchIcon">
+      <span id="searchIcon" class="material-icons"> search </span>
+    </div>
+  </div>
+
+  <div class="header__nav">
+    <div class="header__navOption">
+      <span class="header__navOptionUp">Hello {{ userName | uppercase }}</span>
+      <span
+        *ngIf="userName.length > 1"
+        (click)="_authService.SignOut()"
+        class="header__navOptionDown"
+      >
+        Sing Out
+      </span>
+      <span
+        *ngIf="userName.length < 1"
+        [routerLink]="['/singIn']"
+        class="header__navOptionDown"
+      >
+        Sing In
+      </span>
+    </div>
+
+    <div class="header__navOption">
+      <span class="header__navOptionUp">Returns</span>
+      <span class="header__navOptionDown">& Orders</span>
+    </div>
+
+    <div class="header__navOption">
+      <span class="header__navOptionUp">Your</span>
+      <span class="header__navOptionDown">Prime</span>
+    </div>
+  </div>
+
+  <div
+    *ngIf="cart$ | async as cart"
+    [routerLink]="['/checkout']"
+    class="header__shoppingCart"
+  >
+    <span
+      id="shoppingCartIcon"
+      class="material-icons-outlined"
+      [matBadge]="cart.totalItemsCount"
+      [matBadgeHidden]="cart.totalItemsCount === 0"
+      matBadgeColor="warn"
+    >
+      shopping_cart
+    </span>
+    <span id="shoppingCartText" class="header__navOptionDown">Cart</span>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "clone-45101": {
+      "hosting": {
+        "amazon-clone": [
+          "clone-45101"
+        ]
+      }
+    }
+  }
+}

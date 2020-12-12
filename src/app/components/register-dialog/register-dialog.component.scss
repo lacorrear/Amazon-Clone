@@ -1,0 +1,75 @@
+.dialogBody {
+  //   background-color: burlywood;
+  width: 350px;
+  position: relative;
+  &__imputUserInfo {
+    // background-color: chartreuse;
+    width: 100%;
+  }
+  &__passwordMessage {
+    //   border: solid 1px red;
+    display: flex;
+    align-items: center;
+    // margin-top: -10px;
+    margin-bottom: 15px;
+
+    &Icon {
+      height: 21px;
+      #infoIcon {
+        // background-color: palegreen;
+        font-size: 20px;
+        color: #3488aa;
+      }
+    }
+
+    &Text {
+      height: 21px;
+      //   background-color: chartreuse;
+    }
+  }
+
+  &__bottomMessage {
+    // border: crimson solid 1px;
+    margin-top: 20px;
+    display: flex;
+    position: absolute;
+    left: 8px;
+    p {
+      margin-top: auto;
+      margin-bottom: auto;
+      font-size: 15px;
+      line-height: 19px;
+      a {
+        cursor: pointer;
+        color: #0066c0;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #closeBtn {
+    position: absolute;
+    top: -10px;
+    right: -9px;
+  }
+
+  #createBtn {
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 90px;
+    border: 1px solid;
+    border-color: #a88734 #9c7e31 #846a29;
+  }
+}
+
+.validEmail {
+  // Changing background color in outline input field
+  // https://prodevsblog.com/questions/227921/changing-background-color-in-outline-input-field/
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #e8f0fe;
+    border-radius: 5px;
+  }
+}

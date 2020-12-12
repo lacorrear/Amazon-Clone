@@ -1,0 +1,121 @@
+<div class="singIn animate__animated animate__fadeIn">
+  <!--------------------------------------------------------------->
+  <!-- singIn__form -->
+  <!--------------------------------------------------------------->
+  <div class="singIn__form">
+    <img
+      [routerLink]="['home']"
+      class="singIn__formLogo"
+      src="https://cdn.usbrandcolors.com/images/logos/amazon-logo.svg"
+      alt="Amazon logo"
+    />
+
+    <!--------------------------------------------------------------->
+    <!-- User Form SingIn -->
+    <!--------------------------------------------------------------->
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="singIn__formInfo">
+        <h1>Sign-In</h1>
+
+        <!--------------------------------------------------------------->
+        <!-- User/Email IMPUT -->
+        <!--------------------------------------------------------------->
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Email</mat-label>
+          <input [(formControl)]="email" required matInput />
+          <mat-error *ngIf="email.invalid">
+            {{ getErrorMessage("user") }}
+          </mat-error>
+        </mat-form-field>
+        <!--------------------------------------------------------------->
+        <!-- /User/Email IMPUT -->
+        <!--------------------------------------------------------------->
+
+        <!--------------------------------------------------------------->
+        <!-- Password IMPUT -->
+        <!--------------------------------------------------------------->
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Password</mat-label>
+          <input
+            [(formControl)]="password"
+            required
+            matInput
+            placeholder="Enter your password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-error *ngIf="password.invalid">
+            {{ getErrorMessage("password") }}
+          </mat-error>
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <!--------------------------------------------------------------->
+        <!-- /Password IMPUT -->
+        <!--------------------------------------------------------------->
+
+        <button
+          id="singInBtn"
+          mat-flat-button
+          type="submit"
+          [disabled]="!profileForm.valid"
+        >
+          SingIn
+        </button>
+
+        <p>
+          By continuing, you agree up to Amazon's
+          <span>FAKE CLONE</span> Conditions of Use and
+          <span> Privacy Notice.</span>
+        </p>
+      </div>
+    </form>
+    <!--------------------------------------------------------------->
+    <!-- /User Form SingIn -->
+    <!--------------------------------------------------------------->
+
+    <div class="singIn__formNewUser">
+      <!------------------------------------------------>
+      <div class="singIn__formNewUser__divider">
+        <h5>New to Amazon?</h5>
+      </div>
+      <!------------------------------------------------>
+      <div class="singIn__formNewUser__button">
+        <button id="createAccountBtn" (click)="openDialog()" mat-flat-button>
+          Create your Amazon account
+        </button>
+      </div>
+      <!------------------------------------------------>
+    </div>
+  </div>
+  <!--------------------------------------------------------------->
+  <!-- /singIn__form -->
+  <!--------------------------------------------------------------->
+
+  <!--------------------------------------------------------------->
+  <!-- singIn__footer -->
+  <!--------------------------------------------------------------->
+  <div class="singIn__footer">
+    <!------------------------------------------------>
+    <div class="singIn__footerRow1"></div>
+    <div class="singIn__footerRow1__Text">
+      <a>Conditions of Use</a>
+      <a>Privacy Notice</a>
+      <a>Help</a>
+    </div>
+    <!------------------------------------------------>
+    <div class="singIn__footerRow2">
+      <p>©1991-2020, AmazonCLONE.com, This is a DEMO</p>
+    </div>
+  </div>
+  <!--------------------------------------------------------------->
+  <!-- /singIn__footer -->
+  <!--------------------------------------------------------------->
+</div>

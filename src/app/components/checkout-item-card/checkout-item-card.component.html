@@ -1,0 +1,56 @@
+<div class="checkOutItem">
+  <div class="checkOutItem__image">
+    <img [src]="product.image" alt="product image" />
+  </div>
+
+  <div class="checkOutItem__info">
+    <h1 class="checkOutItem__infoTitle">{{ product.title }}</h1>
+
+    <div class="checkOutItem__infoRating">
+      <span
+        id="startIcon"
+        *ngFor="let item of fakeArray()"
+        class="material-icons"
+      >
+        star
+      </span>
+    </div>
+
+    <div class="checkOutItem__infoProduct">
+      <p class="checkOutItem__infoProduct__stock">In Stock</p>
+      <p class="checkOutItem__infoProduct__shipping">
+        <strong>FREE Shipping </strong> to Colombia.
+      </p>
+    </div>
+
+    <div class="checkOutItem__infoQtyOptions">
+      <mat-form-field
+        class="checkOutItem__infoQtyOptions__button"
+        appearance="none"
+      >
+        <div class="checkOutItem__infoQtyOptions__buttonSetup">
+          <span matPrefix>Qty:</span>
+          <mat-select [value]="product.quantity">
+            <mat-option (click)="deleteItem()">Delete</mat-option>
+            <mat-option
+              (click)="updateItemNewQty(number)"
+              *ngFor="let number of numbers"
+              [value]="number"
+            >
+              {{ number }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+
+      <a (click)="deleteItem()" class="checkOutItem__infoQtyOptions__delete"
+        >Delete</a
+      >
+      <a>Save for later</a>
+    </div>
+  </div>
+
+  <div class="checkOutItem__price">
+    <h1>{{ product.price | currency: "USD" }}</h1>
+  </div>
+</div>
