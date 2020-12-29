@@ -1,0 +1,201 @@
+.payment {
+  background-color: white;
+  &__subHeader {
+    // border: solid rgb(21, 255, 0) 2px;
+    background-color: #131921;
+    width: 100%;
+    // background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
+    // background: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+    display: flex;
+    position: relative;
+    text-align: center;
+    height: 70px;
+    &Logo {
+      // background-color: rebeccapurple;
+      position: absolute;
+      height: 45px;
+      width: 130px;
+      top: 10px;
+      left: 20px;
+      cursor: pointer;
+    }
+    &Title {
+      flex: 1;
+      h1 {
+        //background-color: lightgreen;
+        color: white;
+        margin-top: 12px;
+        font-size: 30px;
+        font-weight: 500;
+      }
+    }
+    #lockIcon {
+      color: lightgrey;
+      position: absolute;
+      right: 25px;
+      top: 15px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+    width: 85%;
+
+    &__left {
+      // border: solid rgb(0, 119, 255) 1px;
+      background-color: white;
+      flex: 0.7;
+      align-items: center;
+      margin-right: 2vw;
+      padding: 15px;
+
+      &Title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      &Section1-2 {
+        // border: solid rgb(153, 0, 255) 1px;
+        border-bottom: solid 1px lightgray;
+        display: flex;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        &__title {
+          // border: solid rgb(0, 119, 255) 1px;
+          width: 145px;
+        }
+        &__info {
+          // background-color: sandybrown;
+          flex: 1;
+          min-width: 230px;
+          padding-left: 1.5vw;
+          .mat-radio-button ~ .mat-radio-button {
+            margin-left: 16px;
+          }
+          p {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          &RadioBtn {
+            margin-bottom: 10px;
+            #warningPaymentMethod {
+              background-color: transparent;
+              border: 0 transparent;
+              margin-top: 5px;
+              margin-left: -4px;
+            }
+          }
+        }
+        &__changeBtn {
+          width: 10vw;
+          min-width: 80px;
+
+          #createAccountBtn {
+            background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
+            background: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+            width: 100%;
+            border-radius: 3px;
+            border-color: #adb1b8 #a2a6ac #8d9096;
+            border-style: solid;
+            border-width: 1px;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0;
+            text-align: center;
+            text-decoration: none !important;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      &Section3 {
+        // background-color: skyblue;
+        padding-top: 15px;
+        &__items {
+          // border: solid rgb(255, 0, 0) 1px;
+          border: solid lightgray 1px;
+          border-radius: 7px;
+          padding: 10px;
+          margin-left: 15px;
+
+          &Deatails {
+            // border: solid rgb(255, 0, 0) 1px;
+            margin: -10px;
+            &__image {
+              border-radius: 7px 7px 0 0;
+              width: 100%;
+            }
+            p {
+              font-size: 20px;
+              margin-top: 20px;
+              margin-bottom: 25px;
+              margin-left: 15px;
+              span {
+                color: #067d62 !important;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+
+      &Section4 {
+        border: solid lightgray 1px;
+        // margin left same as section3__items
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        border-radius: 7px;
+        padding: 15px;
+        margin-top: 25px;
+        #placeOrderBtn {
+          background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+          height: 40px;
+          min-width: 137px;
+          border: 1px solid;
+          border-color: #a88734 #9c7e31 #846a29;
+        }
+        &__text {
+          //   border: solid rgb(30, 255, 0) 2px;
+          margin-left: 15px;
+          min-width: 272px;
+          h1,
+          p {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          h1 {
+            color: #b12704 !important;
+            font-weight: 500;
+          }
+
+          p {
+            font-size: 12px;
+            span {
+              color: #0066c0;
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__right {
+      border: solid lightgray 1px;
+      border-radius: 5px;
+      background-color: white;
+      flex: 0.3;
+      height: fit-content;
+    }
+  }
+}

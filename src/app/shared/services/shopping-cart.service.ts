@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/database";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs/internal/Observable";
 import { map } from "rxjs/internal/operators/map";
 import { take } from "rxjs/internal/operators/take";
+import Swal from "sweetalert2";
 
 import { Product } from "../../models/product.model";
 import { ShoppingCart } from "../../models/shopping-cart";
@@ -11,7 +13,7 @@ import { ShoppingCart } from "../../models/shopping-cart";
   providedIn: "root",
 })
 export class ShoppingCartService {
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase, private router: Router) {}
 
   // ----------------------------------------------------------
   // getOrCreateCartId
@@ -24,12 +26,12 @@ export class ShoppingCartService {
   }
 
   private async getOrCreateCartId() {
-    let cartId = localStorage.getItem("cartId");
+    let cartId = localStorage.getItem("AmazonCartId");
     if (cartId) {
       return cartId;
     } else {
       let result = await this.create();
-      localStorage.setItem("cartId", result.key);
+      localStorage.setItem("AmazonCartId", result.key);
       return result.key;
     }
   }
@@ -135,16 +137,42 @@ export class ShoppingCartService {
   // ----------------------------------------------------------
   // /modifying quantity Item in shopping cart
   // ----------------------------------------------------------
+
+  // ----------------------------------------------------------
+  // Placing Order
+  // ----------------------------------------------------------
+
+  // Move to the top of the page
+  topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  homeRouter() {
+    this.router.navigate(["/home"]);
+    this.topFunction();
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId();
+    this.db.object("/shopping-carts/" + cartId + "/items/").remove(); //remove fire base Data
+  }
+
+  placeOrder() {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your order has been placed",
+      showConfirmButton: false,
+      timer: 1500,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      this.homeRouter();
+      this.clearCart();
+    });
+  }
+
+  // ----------------------------------------------------------
+  // /Placing Order
+  // ----------------------------------------------------------
 }
-
-//*
-//*
-//*
-//*
-//------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------
-
-// async clearCart() {
-//   let cartId = await this.getOrCreateCartId();
-//   this.db.object("/shopping-carts/" + cartId + "/items/").remove(); //remove fire base Data
-// }

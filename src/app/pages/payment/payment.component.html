@@ -1,0 +1,138 @@
+<div *ngIf="cart$ | async as cart" class="payment">
+  <div class="payment__subHeader">
+    <img
+      (click)="_shoppingCartService.homeRouter()"
+      class="payment__subHeaderLogo"
+      src="https://images-na.ssl-images-amazon.com/images/G/01/magicarp/image/amazon-logo-white.svg"
+      alt="Amazon logo"
+    />
+    <div class="payment__subHeaderTitle">
+      <h1>
+        Checkout ({{ cart.totalItemsCount }} item<span
+          *ngIf="cart.totalItemsCount > 1"
+          >s</span
+        >)
+      </h1>
+    </div>
+    <span id="lockIcon" class="material-icons"> lock </span>
+  </div>
+  <div class="payment__container">
+    <!-- --------------------------------------------------- -->
+    <!-- Left -->
+    <!-- --------------------------------------------------- -->
+    <div class="payment__container__left">
+      <div class="payment__container__leftSection1-2">
+        <div class="payment__container__leftSection1-2__title">
+          <h3 class="payment__container__leftTitle">Shipping address</h3>
+        </div>
+        <div class="payment__container__leftSection1-2__info">
+          <p>Colombia</p>
+          <p>119 BRANTREE ST STE 413</p>
+          <p>Bogota - 111896</p>
+        </div>
+        <div class="payment__container__leftSection1-2__changeBtn">
+          <button id="createAccountBtn" mat-flat-button>Change</button>
+        </div>
+      </div>
+
+      <div class="payment__container__leftSection1-2">
+        <div class="payment__container__leftSection1-2__title">
+          <h3 class="payment__container__leftTitle">Payment method</h3>
+        </div>
+        <div class="payment__container__leftSection1-2__info">
+          <div class="payment__container__leftSection1-2__infoRadioBtn">
+            <mat-radio-group [(ngModel)]="paymentMethod">
+              <mat-radio-button value="1">Visa </mat-radio-button>
+              <mat-radio-button value="2">Amazon Pay</mat-radio-button>
+              <mat-radio-button value="3">PayPal</mat-radio-button>
+            </mat-radio-group>
+            <button
+              id="warningPaymentMethod"
+              *ngIf="paymentMethod === 0"
+              class="mat-error"
+            >
+              please select a payment method
+            </button>
+          </div>
+          <p>442 156 893</p>
+          <p>07/06/22</p>
+        </div>
+        <div class="payment__container__leftSection1-2__changeBtn">
+          <button id="createAccountBtn" mat-flat-button>Change</button>
+        </div>
+      </div>
+
+      <div class="payment__container__leftSection3">
+        <div class="payment__container__leftSection3__title">
+          <h3 class="payment__container__leftTitle">
+            Review items and shipping
+          </h3>
+          <div class="payment__container__leftSection3__items">
+            <div class="payment__container__leftSection3__itemsDeatails">
+              <img
+                class="payment__container__leftSection3__itemsDeatails__image"
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/AmazonPay/PDAYILM/v1/01.jpg"
+                alt=""
+              />
+              <!-- src="https://www.digitalsathi.com/wp-content/uploads/2017/09/Load_1500x300_2.jpg" -->
+              <p>
+                <span>
+                  Guaranteed delivery date:
+                  {{ deliveryDate | date: "longDate" }}</span
+                >
+                if you order in the 37 hours and 39 minutes
+              </p>
+            </div>
+            <div *ngFor="let item of cart.items">
+              <app-checkout-item-card [product]="item"></app-checkout-item-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment__container__leftSection4">
+        <button
+          id="placeOrderBtn"
+          (click)="placeOrder()"
+          mat-flat-button
+          [disabled]="cart.totalItemsCount == 0"
+          type="submit"
+        >
+          <!-- [disabled]="!profileForm.valid" -->
+          Place your order
+        </button>
+        <div class="payment__container__leftSection4__text">
+          <h1>
+            Order total:
+            {{
+              cart.totalPrice + cart.totalPrice * taxesPercent | currency: "USD"
+            }}
+          </h1>
+          <p>
+            By placing your order, you agree to Amazon.com's CLONE
+            <span>privacy notice</span> and
+            <span>conditions of use.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- --------------------------------------------------- -->
+    <!-- /Left -->
+    <!-- --------------------------------------------------- -->
+
+    <!-- --------------------------------------------------- -->
+    <!-- Right -->
+    <!-- --------------------------------------------------- -->
+    <div class="payment__container__right">
+      <app-payment-sumary
+        [numberOfitems]="cart.totalItemsCount"
+        [totalToPay]="cart.totalPrice"
+        [totalTaxes]="cart.totalPrice * taxesPercent"
+        [paymentMethod]="paymentMethod"
+      ></app-payment-sumary>
+    </div>
+    <!-- --------------------------------------------------- -->
+    <!-- /Right -->
+    <!-- --------------------------------------------------- -->
+  </div>
+</div>

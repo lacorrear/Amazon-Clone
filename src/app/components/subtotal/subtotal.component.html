@@ -24,5 +24,12 @@
       </span>
     </mat-checkbox>
   </div>
-  <button id="checkoutButton" mat-flat-button>Proceed to checkout</button>
+  <button
+    id="checkoutButton"
+    [disabled]="numberOfitems == 0"
+    [routerLink]="['/payment']"
+    mat-flat-button
+  >
+    Proceed to checkout
+  </button>
 </div>

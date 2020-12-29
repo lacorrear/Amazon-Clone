@@ -1,4 +1,6 @@
-<app-header *ngIf="urlRouter !== '/singIn'"></app-header>
+<app-header
+  *ngIf="urlRouter !== '/singIn' && urlRouter !== '/payment'"
+></app-header>
 <div class="content">
   <router-outlet></router-outlet>
 </div>

@@ -1,0 +1,65 @@
+<div class="sumary">
+  <div class="sumary__topSection">
+    <div class="sumary__topSection1">
+      <button
+        id="placeOrderBtn"
+        (click)="_shoppingCartService.placeOrder()"
+        mat-flat-button
+        [disabled]="paymentMethod == 0 || totalToPay == 0"
+        type="submit"
+      >
+        <!-- [disabled]="!profileForm.valid" -->
+        Place your order
+      </button>
+      <p>
+        By placing your order, you agree to Amazon.com's CLONE not
+        <span>privacy notice</span> and not <span> conditions of use</span>
+      </p>
+    </div>
+    <div class="sumary__topSection2">
+      <h2>Order Summary</h2>
+      <table style="width: 100%">
+        <tr>
+          <td class="sumary__topSection2__textLeft">
+            Items({{ numberOfitems }})
+          </td>
+          <td class="sumary__topSection2__textRight">
+            {{ totalToPay | currency: "USD" }}
+          </td>
+        </tr>
+        <tr>
+          <td class="sumary__topSection2__textLeft">Shipping & Handling</td>
+          <td class="sumary__topSection2__textRight">$0.00</td>
+        </tr>
+        <tr>
+          <td class="sumary__topSection2__textLeft"></td>
+          <td class="sumary__topSection2__textRight" style="color: lightgray">
+            _______________
+          </td>
+        </tr>
+        <tr>
+          <td class="sumary__topSection2__textLeft">Total before tax</td>
+          <td class="sumary__topSection2__textRight">
+            {{ totalToPay | currency: "USD" }}
+          </td>
+        </tr>
+        <tr>
+          <td class="sumary__topSection2__textLeft">
+            Estimated tax to be collected
+          </td>
+          <td class="sumary__topSection2__textRight">
+            {{ totalTaxes | currency: "USD" }}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="sumary__topSection3">
+      <h2>Order total:</h2>
+      <h2>{{ totalToPay + totalTaxes | currency: "USD" }}</h2>
+    </div>
+  </div>
+  <div class="sumary__bottomSection">
+    <h4>How are shipping costs calculated?</h4>
+    <p>Prime shipping benefits have been applied to your order.</p>
+  </div>
+</div>
